@@ -1,16 +1,28 @@
 ﻿import datetime
 
+import random
+
 def tootajad():
     n = int(input("Sisestage tööliste hulk: "))
-    работники = []
     год_рождения = []
+    names = ["Toomas", "Pavel", "Olja", "David", "Nastja", "Erik"]
+    работники = random.sample(names, n)
     for i in range(n):
-        имя = input(f"Sisestage nimi töötliste n{i+1}: ")
-        год = int(input(f"Sisestage töötaja sünniaasta n{i+1}: "))
-        работники.append(имя)
+        год = random.randint(1950, 2000)
         год_рождения.append(год)
+        print(f"Sisestage sünniaasta töötajale {работники[i]}: {год}")
     return работники, год_рождения
 
+#def tootajad():
+#    n = int(input("Sisestage tööliste hulk: "))
+#    работники = []
+#    год_рождения = []
+#    for i in range(n):
+#        имя = input(f"Sisestage nimi töötliste n{i+1}: ")
+#        год = int(input(f"Sisestage töötaja sünniaasta n{i+1}: "))
+#        работники.append(имя)
+#        год_рождения.append(год)
+#    return работники, год_рождения
 
 def пенсионеры():
     работники, год_рождения = tootajad()
@@ -28,21 +40,50 @@ def keskmine_vanus():
     средний_возраст = sum(возрасты) / len(работники)
     print(f"Keskmine töötaja vanus on {средний_возраст:.1f} aastat")
 
-#while True:
-#    print("Valige tegevus:")
-#    print("1 - Sisestage töötajate arv ja nende aasta")
-#    print("2 - Pensionäride nimekiri")
-#    print("3 - Leidke töötajate keskmine vanus")
-#    print("0 - Välju")
-#    valik = int(input("Sisestage number koos sobiva toiminguga: "))
-#    if valik == 1:
-#        tootajad()
-#    elif valik == 2:
-#        пенсионеры()
-#    elif valik == 3:
-#        keskmine_vanus()
-#    elif valik == 0:
-#        break
-#    else:
-#        print("Vale valik, proovige uuesti!")    
+
+def самые_молодые():
+    работники, год_рождения = tootajad()
+    список_работников = []
+    возраст_года = 30  # устанавливаем возраст молодых рабоников
+    name = set()  
+    for i in range(len(работники)):
+        if 2023 - год_рождения[i] <= возраст_года: 
+            name.add(работники[i])  
+    print("Список самых молодых работников:")
+    for имя in name:
+        print(имя)
+
+
+def самые_старые():
+    работники, год_рождения = tootajad()
+    список_работников = []
+    возраст_года = 40  # устанавливаем возраст старых рабртников
+    name = set()  # создаем пустое множество для уникальных имен
+    for i in range(10):
+        max_year = max(год_рождения)
+        max_index = год_рождения.index(max_year)
+        if 2023 - max_year >= возраст_года:  
+            name.add(работники[max_index]) 
+        год_рождения[max_index] = -1  
+    print("Список самых старых работников:")
+    for имя in name:
+        print(имя)
+
+
+def поиск_работников_по_году_рождения(год):
+    работники, год_рождения = tootajad()
+    результаты_поиска = []
+    for i in range(len(работники)):
+        if год_рождения[i] == год:
+            результаты_поиска.append(работники[i])
+    if len(результаты_поиска) > 0:
+        print(f"Работники, родившиеся в {год} году:")
+        for работник in результаты_поиска:
+            print(работник)
+    else:
+        print(f"Работников, родившихся в {год} году, нет в списке.")
+
+
+
+
 

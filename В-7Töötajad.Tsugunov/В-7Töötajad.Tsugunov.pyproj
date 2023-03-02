@@ -11,6 +11,8 @@
     <OutputPath>.</OutputPath>
     <Name>В-7Töötajad.Tsugunov</Name>
     <RootNamespace>В-7Töötajad.Tsugunov</RootNamespace>
+    <IsWindowsApplication>False</IsWindowsApplication>
+    <InterpreterId>Global|PythonCore|3.11</InterpreterId>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -23,6 +25,9 @@
   <ItemGroup>
     <Compile Include="module1.py" />
     <Compile Include="В7Töötajad.Tsugunov.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <InterpreterReference Include="Global|PythonCore|3.11" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
